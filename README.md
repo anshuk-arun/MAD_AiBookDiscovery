@@ -3,13 +3,14 @@
 ## TODO:
 - ~~Screen Structure~~
 - ~~Navigator Push~~
+- ~~validate hardcoded details~~
 - HomeScreen NavBar
 - ResetPassword
 - Search Screen
 - UserProfile Screen
 - connect with firebase for database
 - Save Login Details to database
-- validate login details before entering
+- validate firebase-stored login details before entering.
 - Recommended titles in Home Screen
 - Searching titles in Search Screen
 - Recent actitivy in User Profile Screen
