@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "421255494872",
+    "project_id": "mad-book-discovery",
+    "storage_bucket": "mad-book-discovery.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421255494872:android:eb1cbf909b10e19d202bad",
+        "android_client_info": {
+          "package_name": "com.example.bookdisc_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMDmKCoiUB3f6qiu20BgZFqG0FVLpvh8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
