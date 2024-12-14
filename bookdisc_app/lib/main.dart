@@ -1,8 +1,15 @@
+import 'package:bookdisc_app/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MaterialApp(home: LoginScreen())
+  );
+  // runApp(const MyApp());
 }
+
+
+/* Everything Below this is not used currently */
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
