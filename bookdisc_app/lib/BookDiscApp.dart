@@ -1,13 +1,14 @@
-import 'package:bookdisc_app/SearchScreen.dart';
-import 'package:bookdisc_app/UserProfileScreen.dart';
+import 'package:bookdisc_app/HomeNB.dart';
+import 'package:bookdisc_app/SearchNB.dart';
+import 'package:bookdisc_app/UserProfileNB.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class BookDiscApp extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _BookDiscAppState createState() => _BookDiscAppState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
+class _BookDiscAppState extends State<BookDiscApp>{
   int currentPageIndex = 1;
   
 
@@ -48,15 +49,16 @@ class _HomeScreenState extends State<HomeScreen>{
         UserProfileNB(),
         
         /// Home Page
-        Center(
-          child: Text('This is the Home Screen.'),
-          /*
-          child: Column(
-            children: const <Widget>[
-              Text('This is the Home Screen.'),
-            ],
-          */
-        ),
+        HomeNB(),
+        // Center(
+        //   child: Text('This is the Home Screen.'),
+        //   /*
+        //   child: Column(
+        //     children: const <Widget>[
+        //       Text('This is the Home Screen.'),
+        //     ],
+        //   */
+        // ),
 
 
         /// Search
