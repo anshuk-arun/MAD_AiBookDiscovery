@@ -1,4 +1,4 @@
-import 'package:bookdisc_app/HomeScreen.dart';
+import 'package:bookdisc_app/BookDiscApp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -58,10 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
     */
   }
 
-  void _openHomeScreen(BuildContext context){
+  void _openBookDiscApp(BuildContext context){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => HomeScreen()),
+      MaterialPageRoute(builder: (context) => BookDiscApp()),
     );
   }
   
@@ -138,9 +138,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     password: _passCtrl.text
                   );
                   
-                  // Login Valid, open into App
-                  print('DEBUG: open homscreen from valid login');
-                  _openHomeScreen(context);
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found'){
                     print('No user found for that email');
@@ -153,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 
                 // FirebaseAuth User is Signed in, enter the app
                 if (FirebaseAuth.instance.currentUser != null){
-                  _openHomeScreen(context);
+                  _openBookDiscApp(context);
                 }
 
                 // FirebaseAuth Sign in Valid, Logs In, -> then open App
