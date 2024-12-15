@@ -1,3 +1,5 @@
+import 'package:bookdisc_app/SearchScreen.dart';
+import 'package:bookdisc_app/UserProfileScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -6,32 +8,61 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen>{
+  int currentPageIndex = 1;
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        title: Text('Ai Book Discovery App'),
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Text('This is the Home Screen.'),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index){
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        indicatorColor: Colors.grey,
+        selectedIndex: currentPageIndex,
+        destinations: const<Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'User Profile',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+        ],
+      ),
+      body: <Widget>[
 
-            // No need for explicit Logout Button
-            // The back button is covered by the Material App
-
-            /*
-            ElevatedButton(
-              child: Text('Exit App'),
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            ),
-            */
-            
-          ],
+        /// User Profile
+        UserProfileNB(),
+        
+        /// Home Page
+        Center(
+          child: Text('This is the Home Screen.'),
+          /*
+          child: Column(
+            children: const <Widget>[
+              Text('This is the Home Screen.'),
+            ],
+          */
         ),
-      ),
+
+
+        /// Search
+        SearchNB(),
+
+      ][currentPageIndex],
     );
   }
 
