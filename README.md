@@ -1,4 +1,6 @@
 # AI Book Discovery app
+## Presentation Link
+https://studentgsu-my.sharepoint.com/:p:/g/personal/nnaik4_student_gsu_edu/Eb-WldUe2iBOuA9xSAjP2fMBk8Wp0ppBmeOCUrYDfdglcQ?e=b3o75M
 
 ## TODO:
 - ~~Screen Structure~~
