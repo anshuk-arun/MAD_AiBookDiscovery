@@ -22,6 +22,7 @@
 - Searching titles in Search Screen
 
 ### User Profile Screen
+- Cloud Firestore for storing Users. (currently breaks, so commented out)
 - Recent actitivy in User Profile Screen
 
 ### Reset Password
