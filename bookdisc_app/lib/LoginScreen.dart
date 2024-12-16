@@ -2,6 +2,8 @@ import 'package:bookdisc_app/BookDiscApp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,6 +15,9 @@ class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _passCtrl;
   String usernameHC = "personA";
   String passwordHC = "pass1234";
+
+  // FirebaseFirestore db = FirebaseFirestore.instance;
+
 
   @override
   void initState(){
@@ -64,6 +69,40 @@ class _LoginScreenState extends State<LoginScreen> {
       MaterialPageRoute(builder: (context) => BookDiscApp()),
     );
   }
+
+
+  /// Functions to help with REGISTER
+
+  void _registerUserWithFirebaseAuth() async {
+    try{
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _userCtrl.text,
+        password: _passCtrl.text
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak password'){
+        print('The password provided is too weak');
+      } else if (e.code == 'email-already-in-use'){
+        print('The account already exists for that email');
+      }
+    } catch (e){
+      print(e);
+    }
+  }
+
+  /*
+  void _addUserToCloudFirestore(){
+    final user = <String, String>{
+      "email" : _userCtrl.text,
+      "password": _passCtrl.text
+    };
+
+    db.collection('users')
+      .doc(_userCtrl.text.substring(0, _userCtrl.text.indexOf('@')))
+      .set(user)
+      .onError((e, _) => print("Error writing document: $e"));
+  }
+  */
   
 
 
@@ -153,65 +192,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   _openBookDiscApp(context);
                 }
 
-                // FirebaseAuth Sign in Valid, Logs In, -> then open App
-                /*
-                if (_validateLogin(_userCtrl.text, _passCtrl.text)){
-                  print('DEBUG: Opening App through _validateLogin and _openHomeScreen');
-                  _openHomeScreen(context);
-                }
-                */
               }
-
-                /*
-                if (_validateLogin(_userCtrl.text, _passCtrl.text)){
-                  _openHomeScreen(context);
-                }
-                else{
-                  showDialog<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: const Text('ERROR: Incorrect Login Details!!'),
-                        content: Text(
-                            '''
-                            Input Login ${_userCtrl.text}
-                            Input Pass ${_passCtrl.text}
-                            HC Username ${usernameHC}
-                            HC Password ${passwordHC}
-                            '''),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('OK'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
-              */
             ),
 
             ElevatedButton(
               child: Text('Register'),
               onPressed: () async{
-                try{
-                  final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: _userCtrl.text,
-                    password: _passCtrl.text
-                  );
-                } on FirebaseAuthException catch (e) {
-                  if (e.code == 'weak password'){
-                    print('The password provided is too weak');
-                  } else if (e.code == 'email-already-in-use'){
-                    print('The account already exists for that email');
-                  }
-                } catch (e){
-                  print(e);
-                }
+                
+                _registerUserWithFirebaseAuth();
+
+                //_addUserToCloudFirestore();
               }
             ),
 

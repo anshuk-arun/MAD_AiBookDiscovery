@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'mad-book-discovery',
     storageBucket: 'mad-book-discovery.firebasestorage.app',
   );
+
 }
